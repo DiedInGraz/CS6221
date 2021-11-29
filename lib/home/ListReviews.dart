@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:csci6221/home/ToolBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class ListReviews extends StatefulWidget {
   const ListReviews({Key? key}) : super(key: key);
@@ -11,14 +13,44 @@ class ListReviews extends StatefulWidget {
 
 class _ListReviewsState extends State<ListReviews> {
 
+  List departmentList = [];
+  String department = "Department";
+  List professors = ["Professor"];
+  String professor = "Professor";
+  List classList = ["Class"];
+  String classNumber = "Class";
+
+  @override
+  void initState() {
+    readJson();
+    super.initState();
+  }
+
   @override
   void dispose() {
     super.dispose();
   }
 
-  checkLogin() {
+  // Fetch content from the json file
+  Future<void> readJson() async {
+
+    final String response = await rootBundle.loadString('assets/department.json');
+    setState(() {
+      departmentList = json.decode(response);
+      departmentList.insert(0, {
+        "code": "ACA",
+        "description": "Department"
+      });
+    });
+  }
+
+  showDetail() {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection("Reviews").snapshots(),
+      stream: department == "Department" ? FirebaseFirestore.instance.collection("Reviews").snapshots()
+                : professor == "Professor" && classNumber == "Class" ? FirebaseFirestore.instance.collection("Reviews").where("department", isEqualTo: department).snapshots()
+                : professor != "Professor" && classNumber == "Class" ? FirebaseFirestore.instance.collection("Reviews").where("department", isEqualTo: department).where("professor", isEqualTo: professor).snapshots()
+                : professor == "Professor" && classNumber != "Class" ? FirebaseFirestore.instance.collection("Reviews").where("department", isEqualTo: department).where("class", isEqualTo: classNumber).snapshots()
+                : FirebaseFirestore.instance.collection("Reviews").where("department", isEqualTo: department).where("professor", isEqualTo: professor).where("class", isEqualTo: classNumber).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if(!snapshot.hasData) {
           return Container(
@@ -34,7 +66,7 @@ class _ListReviewsState extends State<ListReviews> {
         } else {
             return ListView.builder(
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 DocumentSnapshot ds = (snapshot.data!).docs[index];
                 return Padding(
@@ -114,15 +146,89 @@ class _ListReviewsState extends State<ListReviews> {
     );
   }
 
+  fetchProfessorList() {
+    FirebaseFirestore.instance.collection("Reviews").where("department", isEqualTo: department).get().then((querySnapshot) {
+      querySnapshot.docs.forEach((result) {
+        setState(() {
+          if(!professors.contains(result.data()['professor'])) {
+            professors.add(result.data()['professor']);
+          }
+          if(!classList.contains(result.data()['class'])) {
+            classList.add(result.data()['class']);
+          }
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    //fetchProfessorList();
     return Scaffold(
       body: Column(
         children: <Widget> [
           ToolBar('GWBooks'),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DropdownButton<String>(
+                value: department,
+                items: departmentList.map((item) {
+                  return DropdownMenuItem<String>(
+                    child: Text(item['description']),
+                    value: item['description'],
+                  );
+                }).toList(),
+                onChanged: (String? newVal) async {
+                  setState(() {
+                    department = newVal!;
+                    professors.clear();
+                    professors.add("Professor");
+                    professor = "Professor";
+                    classList.clear();
+                    classList.add("Class");
+                    classNumber = "Class";
+                  });
+                  fetchProfessorList();
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  DropdownButton<String>(
+                    value: professor,
+                    items: professors.map((item) {
+                      return DropdownMenuItem<String>(
+                        child: Text(item),
+                        value: item,
+                      );
+                    }).toList(),
+                    onChanged: (String? newVal) {
+                      setState(() {
+                        professor = newVal!;
+                      });
+                    },
+                  ),
+                  DropdownButton<String>(
+                    value: classNumber,
+                    items: classList.map((item) {
+                      return DropdownMenuItem<String>(
+                        child: Text(item),
+                        value: item,
+                      );
+                    }).toList(),
+                    onChanged: (String? newVal) {
+                      setState(() {
+                        classNumber = newVal!;
+                      });
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
           Expanded(
-            child: checkLogin()
+            child: showDetail()
           ),
         ]
       )

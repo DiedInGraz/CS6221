@@ -1,0 +1,642 @@
+[
+  {
+    "code": "ACA",
+    "description": "Academy for Classical Acting"
+  },
+  {
+    "code": "ACCY",
+    "description": "Accountancy"
+  },
+  {
+    "code": "AFST",
+    "description": "Africana Studies"
+  },
+  {
+    "code": "AMST",
+    "description": "American Studies"
+  },
+  {
+    "code": "ANAT",
+    "description": "Anatomy and Cell Biology"
+  },
+  {
+    "code": "ANES",
+    "description": "Anesthesiology"
+  },
+  {
+    "code": "ANTH",
+    "description": "Anthropology"
+  },
+  {
+    "code": "APSC",
+    "description": "Applied Science"
+  },
+  {
+    "code": "ARAB",
+    "description": "Arabic"
+  },
+  {
+    "code": "ARTH",
+    "description": "Art Therapy"
+  },
+  {
+    "code": "ASTR",
+    "description": "Astronomy"
+  },
+  {
+    "code": "BIOC",
+    "description": "Biochemistry"
+  },
+  {
+    "code": "BISC",
+    "description": "Biological Sciences"
+  },
+  {
+    "code": "BME",
+    "description": "Biomedical Engineering"
+  },
+  {
+    "code": "BMSC",
+    "description": "Biomedical Sciences"
+  },
+  {
+    "code": "BIOS",
+    "description": "Biostatistics"
+  },
+  {
+    "code": "BADM",
+    "description": "Business Administration"
+  },
+  {
+    "code": "CANC",
+    "description": "Cancer Biology"
+  },
+  {
+    "code": "CHEM",
+    "description": "Chemistry"
+  },
+  {
+    "code": "CHIN",
+    "description": "Chinese"
+  },
+  {
+    "code": "CE",
+    "description": "Civil Engineering"
+  },
+  {
+    "code": "CLAS",
+    "description": "Classical Studies"
+  },
+  {
+    "code": "CML",
+    "description": "Clinical Mgt &amp; Leadership"
+  },
+  {
+    "code": "COHM",
+    "description": "Clinical Oper &amp; Hlthcare Mgmt"
+  },
+  {
+    "code": "CRA",
+    "description": "Clinical Research Admin"
+  },
+  {
+    "code": "CTS",
+    "description": "Clinical Translational Science"
+  },
+  {
+    "code": "CPS",
+    "description": "College/Professional Studies"
+  },
+  {
+    "code": "CCAS",
+    "description": "Columbian College"
+  },
+  {
+    "code": "COMM",
+    "description": "Communication"
+  },
+  {
+    "code": "CSCI",
+    "description": "Computer Science"
+  },
+  {
+    "code": "CAH",
+    "description": "Corcoran Art History"
+  },
+  {
+    "code": "CDAD",
+    "description": "Corcoran Decorative Art Design"
+  },
+  {
+    "code": "CEX",
+    "description": "Corcoran Exhibition Design"
+  },
+  {
+    "code": "CFN",
+    "description": "Corcoran First Year Foundation"
+  },
+  {
+    "code": "CGD",
+    "description": "Corcoran Graphic Design"
+  },
+  {
+    "code": "CIXD",
+    "description": "Corcoran Interaction Design"
+  },
+  {
+    "code": "CIAR",
+    "description": "Corcoran Interior Architecture"
+  },
+  {
+    "code": "CMST",
+    "description": "Corcoran Museum Studies"
+  },
+  {
+    "code": "CPJ",
+    "description": "Corcoran Photojournalism"
+  },
+  {
+    "code": "CSA",
+    "description": "Corcoran Studio Arts"
+  },
+  {
+    "code": "CTAD",
+    "description": "Corcoran Theatre &amp; Dance"
+  },
+  {
+    "code": "CNSL",
+    "description": "Counseling"
+  },
+  {
+    "code": "CPED",
+    "description": "Curriculum and Pedagogy"
+  },
+  {
+    "code": "DATS",
+    "description": "Data Science"
+  },
+  {
+    "code": "DNSC",
+    "description": "Decision Sciences"
+  },
+  {
+    "code": "DERM",
+    "description": "Dermatology"
+  },
+  {
+    "code": "EALL",
+    "description": "East Asian Lang &amp; Lit"
+  },
+  {
+    "code": "ECON",
+    "description": "Economics"
+  },
+  {
+    "code": "EDUC",
+    "description": "Educational Leadership"
+  },
+  {
+    "code": "ECE",
+    "description": "Electrical &amp; Computer Engring"
+  },
+  {
+    "code": "EHS",
+    "description": "Emergency Health Services"
+  },
+  {
+    "code": "EMED",
+    "description": "Emergency Medicine"
+  },
+  {
+    "code": "ENGL",
+    "description": "English"
+  },
+  {
+    "code": "EAP",
+    "description": "English for Academic Purposes"
+  },
+  {
+    "code": "EMSE",
+    "description": "Engr Mgt &amp; Systems Engineering"
+  },
+  {
+    "code": "ENRP",
+    "description": "Environmental Resource Policy"
+  },
+  {
+    "code": "EPID",
+    "description": "Epidemiology"
+  },
+  {
+    "code": "EXNS",
+    "description": "Exercise &amp; Nutrition Sciences"
+  },
+  {
+    "code": "FILM",
+    "description": "Film Studies"
+  },
+  {
+    "code": "FINA",
+    "description": "Finance"
+  },
+  {
+    "code": "FORP",
+    "description": "Forensic Psychology"
+  },
+  {
+    "code": "FORS",
+    "description": "Forensic Sciences"
+  },
+  {
+    "code": "FREN",
+    "description": "French"
+  },
+  {
+    "code": "GTCH",
+    "description": "GWTeach"
+  },
+  {
+    "code": "GENO",
+    "description": "Genomics and Bioinformatics"
+  },
+  {
+    "code": "GEOG",
+    "description": "Geography"
+  },
+  {
+    "code": "GEOL",
+    "description": "Geology"
+  },
+  {
+    "code": "GER",
+    "description": "Germanic Language and Literature"
+  },
+  {
+    "code": "GCON",
+    "description": "Government Contracts"
+  },
+  {
+    "code": "GREK",
+    "description": "Greek"
+  },
+  {
+    "code": "HCQ",
+    "description": "Health Care Quality"
+  },
+  {
+    "code": "HCS",
+    "description": "Health Care Science"
+  },
+  {
+    "code": "HSCI",
+    "description": "Health Sciences Programs"
+  },
+  {
+    "code": "HLWL",
+    "description": "Health and Wellness"
+  },
+  {
+    "code": "HSML",
+    "description": "Health Services Management and Leadership"
+  },
+  {
+    "code": "HEBR",
+    "description": "Hebrew"
+  },
+  {
+    "code": "HIST",
+    "description": "History"
+  },
+  {
+    "code": "HOMP",
+    "description": "Hominid Paleobiology"
+  },
+  {
+    "code": "HONR",
+    "description": "Honors"
+  },
+  {
+    "code": "HDEV",
+    "description": "Human Development"
+  },
+  {
+    "code": "HFR",
+    "description": "Human Function/Rehabilitation"
+  },
+  {
+    "code": "HOL",
+    "description": "Human Organizational Learning"
+  },
+  {
+    "code": "HSSJ",
+    "description": "Human Services and Social Justice"
+  },
+  {
+    "code": "ISTM",
+    "description": "InfSystemsTechnologyManagement"
+  },
+  {
+    "code": "INFR",
+    "description": "Informatics"
+  },
+  {
+    "code": "PSIS",
+    "description": "Integrated Inf, Sci, and Tech"
+  },
+  {
+    "code": "INTM",
+    "description": "Integrative Medicine"
+  },
+  {
+    "code": "IDIS",
+    "description": "Interdisciplinary Courses"
+  },
+  {
+    "code": "IAFF",
+    "description": "International Affairs"
+  },
+  {
+    "code": "IBUS",
+    "description": "International Business"
+  },
+  {
+    "code": "ITAL",
+    "description": "Italian"
+  },
+  {
+    "code": "JAPN",
+    "description": "Japanese"
+  },
+  {
+    "code": "JSTD",
+    "description": "Judaic Studies"
+  },
+  {
+    "code": "KOR",
+    "description": "Korean"
+  },
+  {
+    "code": "LATN",
+    "description": "Latin"
+  },
+  {
+    "code": "LAW",
+    "description": "Law"
+  },
+  {
+    "code": "LGAF",
+    "description": "Legislative Affairs"
+  },
+  {
+    "code": "LSPA",
+    "description": "Lifestyle,Sport and Phys Activity"
+  },
+  {
+    "code": "MGT",
+    "description": "Management"
+  },
+  {
+    "code": "MKTG",
+    "description": "Marketing"
+  },
+  {
+    "code": "MBAD",
+    "description": "Master of Business Administrtn"
+  },
+  {
+    "code": "MATH",
+    "description": "Mathematics"
+  },
+  {
+    "code": "MAE",
+    "description": "Mechanical and Aerospace Engring"
+  },
+  {
+    "code": "MLS",
+    "description": "Medical Laboratory Science"
+  },
+  {
+    "code": "MED",
+    "description": "Medicine"
+  },
+  {
+    "code": "MICR",
+    "description": "Microbio, Immun and Tropical Med"
+  },
+  {
+    "code": "MMED",
+    "description": "Molecular Medicine"
+  },
+  {
+    "code": "MUS",
+    "description": "Music"
+  },
+  {
+    "code": "NSC",
+    "description": "Naval Science"
+  },
+  {
+    "code": "NRSC",
+    "description": "Neuroscience"
+  },
+  {
+    "code": "NURS",
+    "description": "Nursing"
+  },
+  {
+    "code": "OB&G",
+    "description": "Obstetrics and Gynecology"
+  },
+  {
+    "code": "OT",
+    "description": "Occupational Therapy"
+  },
+  {
+    "code": "ORSC",
+    "description": "Organizational Sciences"
+  },
+  {
+    "code": "PSLX",
+    "description": "Paralegal Studies"
+  },
+  {
+    "code": "PATH",
+    "description": "Pathology"
+  },
+  {
+    "code": "PSTD",
+    "description": "Peace Studies"
+  },
+  {
+    "code": "PED",
+    "description": "Pediatrics"
+  },
+  {
+    "code": "PERS",
+    "description": "Persian"
+  },
+  {
+    "code": "PHAR",
+    "description": "Pharmacology"
+  },
+  {
+    "code": "PHIL",
+    "description": "Philosophy"
+  },
+  {
+    "code": "PT",
+    "description": "Physical Therapy"
+  },
+  {
+    "code": "PA",
+    "description": "Physician Assistant"
+  },
+  {
+    "code": "PHYS",
+    "description": "Physics"
+  },
+  {
+    "code": "PMGT",
+    "description": "Political Management"
+  },
+  {
+    "code": "PPSY",
+    "description": "Political Psychology"
+  },
+  {
+    "code": "PSC",
+    "description": "Political Science"
+  },
+  {
+    "code": "PORT",
+    "description": "Portuguese"
+  },
+  {
+    "code": "PSCS",
+    "description": "Prof Studies - Cybersecurity"
+  },
+  {
+    "code": "PSHS",
+    "description": "Prof Studies-Homeland Security"
+  },
+  {
+    "code": "PSPR",
+    "description": "Prof Studies-Public Relations"
+  },
+  {
+    "code": "PSPB",
+    "description": "Prof Studies-Publishing"
+  },
+  {
+    "code": "PSAD",
+    "description": "ProfStd-AdvocacyGlobalEnvr"
+  },
+  {
+    "code": "PSHC",
+    "description": "ProfStudies HlthCareCorpCompli"
+  },
+  {
+    "code": "PSUS",
+    "description": "ProfStudiesUrbanSustainability"
+  },
+  {
+    "code": "PSYD",
+    "description": "Professional Psychology"
+  },
+  {
+    "code": "PCHI",
+    "description": "Psychiatry and Behavioral Sci"
+  },
+  {
+    "code": "PSYC",
+    "description": "Psychology"
+  },
+  {
+    "code": "PUBH",
+    "description": "Public Health"
+  },
+  {
+    "code": "PPPA",
+    "description": "Public Policy and Public Admin"
+  },
+  {
+    "code": "RAD",
+    "description": "Radiology"
+  },
+  {
+    "code": "RAFF",
+    "description": "Regulatory Affairs"
+  },
+  {
+    "code": "REL",
+    "description": "Religion"
+  },
+  {
+    "code": "SEAS",
+    "description": "School of Eng and Applied Sci"
+  },
+  {
+    "code": "SMPA",
+    "description": "School of Media and Public Affairs"
+  },
+  {
+    "code": "SLAV",
+    "description": "Slavic Languages and Lit"
+  },
+  {
+    "code": "SOC",
+    "description": "Sociology"
+  },
+  {
+    "code": "SPAN",
+    "description": "Spanish"
+  },
+  {
+    "code": "SPED",
+    "description": "Special Education"
+  },
+  {
+    "code": "SLHS",
+    "description": "Speech, Language and Hearing Sci"
+  },
+  {
+    "code": "STAT",
+    "description": "Statistics"
+  },
+  {
+    "code": "SMPP",
+    "description": "Strategic Mgt and Public Policy"
+  },
+  {
+    "code": "SURG",
+    "description": "Surgery"
+  },
+  {
+    "code": "SUST",
+    "description": "Sustainability"
+  },
+  {
+    "code": "TSTD",
+    "description": "Tourism Studies"
+  },
+  {
+    "code": "THS",
+    "description": "Translational Health Sciences"
+  },
+  {
+    "code": "UNIV",
+    "description": "University Seminar"
+  },
+  {
+    "code": "UW",
+    "description": "University Writing"
+  },
+  {
+    "code": "WLP",
+    "description": "Women and Leadership Program"
+  },
+  {
+    "code": "WGSS",
+    "description": "Women's,Gender and SexualityStudy"
+  }
+]

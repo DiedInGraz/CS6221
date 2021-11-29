@@ -58,7 +58,7 @@ class ToolBar extends StatelessWidget {
     } else {
       return Container(
         child: const Visibility(
-          child: Text("          "),
+          child: Text("              "),
           visible: true,
         ),
       );
