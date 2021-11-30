@@ -198,89 +198,99 @@ class _AddReviewsState extends State<AddReviews> {
             },
           ),
           professor == "Not Found? Create Professor" ? Flexible(
-            child: TextField( // or using TextFormField and change initialValue
-              controller: TextEditingController()..text = professorFinal,
-              decoration: const InputDecoration(hintText: "New Professor Name"),
-              keyboardType: TextInputType.name,
-              onChanged: (value){
-                professorFinal = value;
-              },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child:  TextField( // or using TextFormField and change initialValue
+                    controller: TextEditingController()..text = professorFinal,
+                    decoration: const InputDecoration(hintText: "New Professor Name"),
+                    keyboardType: TextInputType.name,
+                    onChanged: (value){
+                      professorFinal = value;
+                    },
+                  )
             )
           )
           : Container(),
-          Flexible(
-            child: TextField( // or using TextFormField and change initialValue
-              controller: TextEditingController()..text = classNumber,
-              decoration: const InputDecoration(hintText: "Class Number"),
-              keyboardType: TextInputType.number,
-              onChanged: (value){
-                classNumber = value;
-              },
-            )
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            child: Flexible(
+                child: TextField( // or using TextFormField and change initialValue
+                  controller: TextEditingController()..text = classNumber,
+                  decoration: const InputDecoration(hintText: "Class Number"),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value){
+                    classNumber = value;
+                  },
+                )
+            ),
           ),
-          Flexible(
-            child: TextField( // or using TextFormField and change initialValue
-              controller: TextEditingController()..text = comment,
-              decoration: const InputDecoration(hintText: "Comment"),
-              keyboardType: TextInputType.multiline,
-              onChanged: (value){
-                comment = value;
-              },
-            )
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            child: Flexible(
+                child: TextField( // or using TextFormField and change initialValue
+                  controller: TextEditingController()..text = comment,
+                  decoration: const InputDecoration(hintText: "Comment"),
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value){
+                    comment = value;
+                  },
+                )
+            ),
           ),
-          Row(
-            children: [
-              const Text("Easy/Hard",
-                  style: TextStyle(
-                    color: Color(0xFF00FF00),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 30.0
-                  )
-              ),
-              StarRating(
-                rating: rating,
-                onRatingChanged: (rating) => setState(() => this.rating = rating),
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            child: Row(
+              children: [
+                const Text("Easy/Hard",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 30.0
+                    )
+                ),
+                StarRating(
+                  rating: rating,
+                  onRatingChanged: (rating) => setState(() => this.rating = rating),
+                )
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Flexible(
-                  child: TextField( // or using TextFormField and change initialValue
-                    controller: TextEditingController()..text = emailAccount,
-                    decoration: const InputDecoration(hintText: "Please verify your gwu email account"),
-                    onChanged: (value){
-                      emailAccount = value;
-                    },
-                  )
-              ),
-              MaterialButton(
-                color: Colors.teal,
-                child: const Text('Verify', style: TextStyle(color: Colors.white)),
-                onPressed: () async {
-                  bool checkValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@gwu.edu").hasMatch(emailAccount);
-                  if(emailAccount.trim() == "" || !checkValid) {
-                    emailEmpty();
-                  } else {
-                    print(emailAccount);
-                    bool result = await emailAuth.sendOtp(
-                        recipientMail: emailAccount, otpLength: 5);
-                    if (result) {
-                      setState(() {
-                        submitValid = true;
-                      });
+          Padding (
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            child: Row(
+              children: [
+                Flexible(
+                    child: TextField( // or using TextFormField and change initialValue
+                      controller: TextEditingController()..text = emailAccount,
+                      decoration: const InputDecoration(hintText: "Please verify your gwu email account"),
+                      onChanged: (value){
+                        emailAccount = value;
+                      },
+                    )
+                ),
+                SizedBox(width: 10),
+                MaterialButton(
+                    minWidth: 50,
+                    color: Colors.teal,
+                    child: const Text('Verify', style: TextStyle(color: Colors.white)),
+                    onPressed: () async {
+                      bool checkValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@gwu.edu").hasMatch(emailAccount);
+                      if(emailAccount.trim() == "" || !checkValid) {
+                        emailEmpty();
+                      } else {
+                        print(emailAccount);
+                        bool result = await emailAuth.sendOtp(recipientMail: emailAccount, otpLength: 5);
+                        if (result) {
+                          setState(() {
+                            submitValid = true;
+                          });
+                        }
+                      }
                     }
-                    print(result);
-
-                    // FirebaseAuth.instance.sendSignInLinkToEmail(
-                    //     email: emailAccount, actionCodeSettings: acs)
-                    //     .catchError((onError) => print('Error sending email verification $onError'))
-                    //     .then((value) => print('Successfully sent email verification'));
-                  }
-                }
-              )
-            ],
+                )
+              ],
+            ),
           ),
           submitValid ? Flexible(
             child: TextField( // or using TextFormField and change initialValue
@@ -293,16 +303,18 @@ class _AddReviewsState extends State<AddReviews> {
             )
           )
           : Container(),
-          MaterialButton(
-            minWidth: double.infinity,
-            color: Colors.teal,
-            child: const Text('Submit Reviews', style: TextStyle(color: Colors.white)),
-            onPressed: () async {
-              if(department.trim() == "" || professor.trim() == "" || classNumber.trim() == "" || comment.trim() == "" || rating == 0.0) {
-                inputEmpty();
-              } else if(!emailAuth.validateOtp(recipientMail: emailAccount, userOtp: emailVerifyCode)) {
-                validationError();
-              } else {
+          Padding(
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+            child: MaterialButton(
+              minWidth: double.infinity,
+              color: Colors.teal,
+              child: const Text('Submit Reviews', style: TextStyle(color: Colors.white)),
+              onPressed: () async {
+                if(department.trim() == "" || professor.trim() == "" || classNumber.trim() == "" || comment.trim() == "" || rating == 0.0) {
+                  inputEmpty();
+                } else if(!emailAuth.validateOtp(recipientMail: emailAccount, userOtp: emailVerifyCode)) {
+                  validationError();
+                } else {
                   firestoreInstance.collection("Reviews").add(
                       {
                         "creator" : "",
@@ -316,11 +328,12 @@ class _AddReviewsState extends State<AddReviews> {
                       }).then((value){
                     print(value.id);
                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
-                    const ListReviews()
+                      const ListReviews()
                     ));
                   });
-              }
-            }
+                }
+              },
+            ),
           ),
         ]
       )

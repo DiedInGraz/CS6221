@@ -14,18 +14,18 @@ class StarRating extends StatelessWidget {
     if (index >= rating) {
       icon = const Icon(
         Icons.star_border,
-        color: Color(0xFF00FF00),
+        color: Colors.amber,
       );
     }
     else if (index > rating - 1 && index < rating) {
       icon = const Icon(
         Icons.star_half,
-        color: Color(0xFF00FF00),
+        color: Colors.blue,
       );
     } else {
       icon = const Icon(
         Icons.star,
-        color: Color(0xFF00FF00),
+        color: Colors.amber,
       );
     }
     return InkResponse(

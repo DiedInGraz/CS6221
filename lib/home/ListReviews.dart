@@ -70,71 +70,156 @@ class _ListReviewsState extends State<ListReviews> {
               itemBuilder: (context, index) {
                 DocumentSnapshot ds = (snapshot.data!).docs[index];
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 12.0, 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Expanded(
-                              flex: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12.0),
-                                    child: Text("Department: " + ds['department'].toString(), style: const TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.blue,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12.0),
-                                    child: Text("Class: " + ds['class'].toString(), style: const TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.blue,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12.0),
-                                    child: Text("Professor: " + ds['professor'].toString(), style: const TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.blue,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12.0),
-                                    child: Text("Comments: " + ds['comment'].toString(), style: const TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.blue,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12.0),
-                                    child: Text("Rating: " + ds['easyHard'].toString(), style: const TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.blue,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                  ),
-                                ],
-                              )
+                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 5.0),
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5.0, 17.0, 5.0, 0.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Expanded(
+                                  flex: 2,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                            style: const TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.black,
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w400
+                                            ),
+                                              children: [
+                                                const TextSpan(text: "Department: "),
+                                                TextSpan(
+                                                    text: ds['department'].toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w400
+                                              ),
+                                              children: [
+                                                const TextSpan(text: "Class: "),
+                                                TextSpan(
+                                                    text: ds['class'].toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w400
+                                              ),
+                                              children: [
+                                                const TextSpan(text: "Professor: "),
+                                                TextSpan(
+                                                    text: ds['professor'].toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w400
+                                              ),
+                                              children: [
+                                                const TextSpan(text: "Comments: "),
+                                                TextSpan(
+                                                    text: ds['comment'].toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w400
+                                              ),
+                                              children: [
+                                                const TextSpan(text: "Rating: "),
+                                                TextSpan(
+                                                    text: ds['easyHard'].toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.red,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      Container(height: 16.0),
-                    ],
+                        ),
+                        Container(height: 16.0),
+                      ],
+                    )
                   )
                 );
               },
@@ -224,12 +309,12 @@ class _ListReviewsState extends State<ListReviews> {
                     },
                   ),
                 ],
-              )
+              ),
             ],
           ),
           Expanded(
-            child: showDetail()
-          ),
+              child: showDetail()
+          )
         ]
       )
     );

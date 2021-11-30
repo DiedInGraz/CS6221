@@ -79,8 +79,8 @@ class ToolBar extends StatelessWidget {
           stops: [0.0, 1.0],
           tileMode: TileMode.clamp,
           colors: [
-            Color(0xFF3CB371), // blue: 0xFF3366FF; purple: 0xFF9400D3; green: 0xFF3CB371
-            Color(0xFF00FF00), // blue: 0xFF00CCFF; purple: 0xFFEE82EE; green: 0xFF00FF00
+            Color(0xFF3366FF), // blue: 0xFF3366FF; purple: 0xFF9400D3; green: 0xFF3CB371
+            Color(0xFF00CCFF), // blue: 0xFF00CCFF; purple: 0xFFEE82EE; green: 0xFF00FF00
           ],
         ),
       ),
