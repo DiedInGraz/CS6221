@@ -3,6 +3,7 @@ import 'package:csci6221/home/ToolBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class ListReviews extends StatefulWidget {
   const ListReviews({Key? key}) : super(key: key);
@@ -86,6 +87,31 @@ class _ListReviewsState extends State<ListReviews> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w400
+                                              ),
+                                              children: [
+                                                const TextSpan(text: "Submitted Time: "),
+                                                TextSpan(
+                                                    text: DateFormat('yyyy-MM-dd').format(ds['submitTime'].toDate()).toString(),
+                                                    style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight: FontWeight.w700
+                                                    )
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.only(left: 12.0),
                                         child: RichText(

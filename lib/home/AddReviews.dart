@@ -318,14 +318,15 @@ class _AddReviewsState extends State<AddReviews> {
                 } else {
                   firestoreInstance.collection("Reviews").add(
                       {
-                        "creator" : "",
+                        "creator" : emailAccount,
                         "class" : classNumber,
                         "source" : "GWU",
                         "easyHard" : rating,
                         "reported" : false,
                         "department" : department,
                         "professor" : professorFinal,
-                        "comment" : comment
+                        "comment" : comment,
+                        "submitTime" : Timestamp.now()
                       }).then((value){
                     print(value.id);
                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
