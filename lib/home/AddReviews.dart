@@ -38,7 +38,7 @@ class _AddReviewsState extends State<AddReviews> {
     readJson();
     super.initState();
     emailAuth = EmailAuth(
-      sessionName: "Sample session",
+      sessionName: "GWBooks",
     );
     emailAuth.config(remoteServerConfiguration);
   }
@@ -211,31 +211,31 @@ class _AddReviewsState extends State<AddReviews> {
             )
           )
           : Container(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: Flexible(
-                child: TextField( // or using TextFormField and change initialValue
-                  controller: TextEditingController()..text = classNumber,
-                  decoration: const InputDecoration(hintText: "Class Number"),
-                  keyboardType: TextInputType.number,
-                  onChanged: (value){
-                    classNumber = value;
-                  },
-                )
-            ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: TextField( // or using TextFormField and change initialValue
+                controller: TextEditingController()..text = classNumber,
+                decoration: const InputDecoration(hintText: "Class Number"),
+                keyboardType: TextInputType.number,
+                onChanged: (value){
+                  classNumber = value;
+                },
+              )
+            )
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: Flexible(
-                child: TextField( // or using TextFormField and change initialValue
-                  controller: TextEditingController()..text = comment,
-                  decoration: const InputDecoration(hintText: "Comment"),
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value){
-                    comment = value;
-                  },
-                )
-            ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: TextField( // or using TextFormField and change initialValue
+                controller: TextEditingController()..text = comment,
+                decoration: const InputDecoration(hintText: "Comment"),
+                keyboardType: TextInputType.multiline,
+                onChanged: (value){
+                  comment = value;
+                },
+              )
+            )
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
