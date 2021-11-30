@@ -83,7 +83,7 @@ class _AddReviewsState extends State<AddReviews> {
               color: Color(0xFFFFFFFF), // dark blue: 0xFF333366
               shape: BoxShape.rectangle,
             ),
-            child: const Text("One of the input is empty", style: TextStyle(
+            child: const Text("One of the input is empty or incorrect", style: TextStyle(
               fontFamily: 'Poppins',
               color: Colors.blue,
               fontSize: 15.0,
@@ -311,11 +311,14 @@ class _AddReviewsState extends State<AddReviews> {
               color: Colors.teal,
               child: const Text('Submit Reviews', style: TextStyle(color: Colors.white)),
               onPressed: () async {
-                if(department.trim() == "" || professor.trim() == "" || classNumber.trim() == "" || comment.trim() == "" || rating == 0.0) {
+                if(department.trim() == "" || professor.trim() == "" || classNumber.trim() == "" || classNumber.trim().length != 4 || comment.trim() == "" || rating == 0.0) {
                   inputEmpty();
                 } else if(!emailAuth.validateOtp(recipientMail: emailAccount, userOtp: emailVerifyCode)) {
                   validationError();
                 } else {
+                  if(professor == "Not Found? Create Professor") {
+                    professor = professorFinal;
+                  }
                   firestoreInstance.collection("Reviews").add(
                       {
                         "creator" : emailAccount,
@@ -324,7 +327,7 @@ class _AddReviewsState extends State<AddReviews> {
                         "easyHard" : rating,
                         "reported" : false,
                         "department" : department,
-                        "professor" : professorFinal,
+                        "professor" : professor,
                         "comment" : comment,
                         "submitTime" : Timestamp.now()
                       }).then((value){
