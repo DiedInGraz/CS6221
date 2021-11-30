@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:csci6221/home/ToolBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:email_auth/email_auth.dart';
 import 'package:csci6221/home/ListReviews.dart';
 import 'package:csci6221/rate/StarRating.dart';
+import 'package:csci6221/auth.config.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
@@ -27,12 +29,18 @@ class _AddReviewsState extends State<AddReviews> {
   String emailVerifyCode = "";
   List departmentList = [];
   List professors = ["Not Found? Create Professor"];
-  bool beginVerify = false;
+
+  var emailAuth;
+  bool submitValid = false;
 
   @override
   void initState() {
     readJson();
     super.initState();
+    emailAuth = EmailAuth(
+      sessionName: "Sample session",
+    );
+    emailAuth.config(remoteServerConfiguration);
   }
 
   @override
@@ -108,6 +116,31 @@ class _AddReviewsState extends State<AddReviews> {
           )
         );
       }
+    );
+  }
+
+  validationError() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+              content: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF), // dark blue: 0xFF333366
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: const Text("The email account is not verified", style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.blue,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500
+                  ))
+              )
+          );
+        }
     );
   }
 
@@ -225,25 +258,35 @@ class _AddReviewsState extends State<AddReviews> {
               MaterialButton(
                 color: Colors.teal,
                 child: const Text('Verify', style: TextStyle(color: Colors.white)),
-                onPressed: () {
+                onPressed: () async {
                   bool checkValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@gwu.edu").hasMatch(emailAccount);
                   if(emailAccount.trim() == "" || !checkValid) {
                     emailEmpty();
                   } else {
                     print(emailAccount);
-                    FirebaseAuth.instance.sendSignInLinkToEmail(
-                        email: emailAccount, actionCodeSettings: acs)
-                        .catchError((onError) => print('Error sending email verification $onError'))
-                        .then((value) => print('Successfully sent email verification'));
+                    bool result = await emailAuth.sendOtp(
+                        recipientMail: emailAccount, otpLength: 5);
+                    if (result) {
+                      setState(() {
+                        submitValid = true;
+                      });
+                    }
+                    print(result);
+
+                    // FirebaseAuth.instance.sendSignInLinkToEmail(
+                    //     email: emailAccount, actionCodeSettings: acs)
+                    //     .catchError((onError) => print('Error sending email verification $onError'))
+                    //     .then((value) => print('Successfully sent email verification'));
                   }
                 }
               )
             ],
           ),
-          beginVerify ? Flexible(
+          submitValid ? Flexible(
             child: TextField( // or using TextFormField and change initialValue
               controller: TextEditingController()..text = emailVerifyCode,
               decoration: const InputDecoration(hintText: "Verify Code"),
+              keyboardType: TextInputType.number,
               onChanged: (value){
                 emailVerifyCode = value;
               },
@@ -257,25 +300,27 @@ class _AddReviewsState extends State<AddReviews> {
             onPressed: () async {
               if(department.trim() == "" || professor.trim() == "" || classNumber.trim() == "" || comment.trim() == "" || rating == 0.0) {
                 inputEmpty();
+              } else if(!emailAuth.validateOtp(recipientMail: emailAccount, userOtp: emailVerifyCode)) {
+                validationError();
               } else {
-                firestoreInstance.collection("Reviews").add(
-                    {
-                      "creator" : "",
-                      "class" : classNumber,
-                      "source" : "GWU",
-                      "easyHard" : rating,
-                      "reported" : false,
-                      "department" : department,
-                      "professor" : professorFinal,
-                      "comment" : comment
-                    }).then((value){
-                  print(value.id);
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
-                      const ListReviews()
-                  ));
-                });
+                  firestoreInstance.collection("Reviews").add(
+                      {
+                        "creator" : "",
+                        "class" : classNumber,
+                        "source" : "GWU",
+                        "easyHard" : rating,
+                        "reported" : false,
+                        "department" : department,
+                        "professor" : professorFinal,
+                        "comment" : comment
+                      }).then((value){
+                    print(value.id);
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
+                    const ListReviews()
+                    ));
+                  });
               }
-            },
+            }
           ),
         ]
       )
